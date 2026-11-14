@@ -17,3 +17,11 @@ if sys.argv[1] == "add":
     tasks.append(new_task)
     storage.save_tasks(tasks)
     print(f"Da them viec so {new_id}: {sys.argv[2]}")
+elif sys.argv[1] == "list":
+    tasks=storage.load_tasks()
+    if len(tasks) == 0:
+        print("Danh sach cong viec dang trong")
+    else:
+        for task in tasks:
+            print(f"[{task['id']}], [{task['title']}], ({task['status']})")
+      
