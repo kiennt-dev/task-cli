@@ -27,8 +27,8 @@ elif sys.argv[1] == "list":
 
 elif sys.argv[1] == "done":
     if len(sys.argv) < 3:
-      print("Nhap id cong viec!")
-      sys.exit(1)
+        print("Nhap id cong viec!")
+        sys.exit(1)
     try:
         task_id = int(sys.argv[2])
     except ValueError:
@@ -46,5 +46,25 @@ elif sys.argv[1] == "done":
         print(f"Da tim thay viec so {task_id}")
     else:
         print(f"Khong tim thay viec so {task_id}")
-        
+elif sys.argv[1] == "delete":
+    if len(sys.argv) < 3:
+        print("Nhap id muon xoa")
+        sys.exit(1)
+    try:
+        task_id = int(sys.argv[2])
+    except ValueError:
+        print("ID phai la mot con so!")
+        sys.exit(1)
+    tasks = storage.load_tasks()
+    found = False
+    for task in tasks:
+        if task["id"] == task_id:
+            tasks.remove(task)
+            found = True
+            break
+    if found:
+        storage.save_tasks(tasks)
+        print(f"Da xoa viec so {task_id}")
+    else:
+        print(f"Khong tim thay viec so {task_id}")
       
