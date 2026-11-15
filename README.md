@@ -12,7 +12,7 @@ python main.py list
 
 ## Ví dụ gõ từng lệnh
 ```bash
-python main.py add "Hoc Python OOP"
+python main.py add "Viec 1"
 python main.py list
 python main.py done 1
 python main.py delete 1
